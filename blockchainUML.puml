@@ -1,0 +1,32 @@
+@startuml
+interface priprema.blockchain.Hasher {
++ byte[] hash(byte[],String[])
+}
+class priprema.blockchain.Block {
+~ Hasher hasher
+- byte[] prevHash
+- String[] transactions
+- int size
++ byte[] hash(byte[])
++ byte[] getPrevHash()
++ void setPrevHash(byte[])
++ int add(String)
++ void remove(int)
+}
+class priprema.blockchain.Main {
++ {static} void main(String[])
+}
+class priprema.blockchain.SHAHasher {
++ byte[] hash(byte[],String[])
+}
+class priprema.blockchain.Blockchain {
+- Block[] blocks
+- int size
++ int add(Block)
++ Boolean isAltered(int,byte[])
++ Block get(int)
+}
+
+
+priprema.blockchain.Hasher <|.. priprema.blockchain.SHAHasher
+@enduml
